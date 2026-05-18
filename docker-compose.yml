@@ -1,0 +1,29 @@
+services:
+
+  server_alpha:
+    build: .
+    container_name: server_alpha
+
+    command: python server.py config_alpha.json
+
+    working_dir: /app/server
+
+    ports:
+      - "5001:5001"
+
+    volumes:
+      - ./server/mailboxes:/app/server/mailboxes
+
+  server_beta:
+    build: .
+    container_name: server_beta
+
+    command: python server.py config_beta.json
+
+    working_dir: /app/server
+
+    ports:
+      - "5002:5002"
+
+    volumes:
+      - ./server/mailboxes:/app/server/mailboxes
